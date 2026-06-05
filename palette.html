@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paleta kolorów</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      background: #f5f1e6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+      gap: 2.5rem;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.8rem;
+      color: #1e1c18;
+      letter-spacing: 0.04em;
+    }
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      max-width: 700px;
+    }
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      width: 110px;
+    }
+    .color-box {
+      width: 110px;
+      height: 110px;
+      border-radius: 2px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .color-name {
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1e1c18;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .color-hex {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      color: #7a7060;
+      letter-spacing: 0.05em;
+    }
+    .bordered { border: 1px solid rgba(0,0,0,0.08); }
+  </style>
+</head>
+<body>
+
+<h1>Paleta kolorów — ze zdjęcia</h1>
+
+<div class="palette">
+
+  <div class="swatch">
+    <div class="color-box bordered" style="background:#f8f5f0"></div>
+    <span class="color-name">Tkanina / biel</span>
+    <span class="color-hex">#f8f5f0</span>
+  </div>
+
+  <div class="swatch">
+    <div class="color-box bordered" style="background:#ede8df"></div>
+    <span class="color-name">Hortensja kremowa</span>
+    <span class="color-hex">#ede8df</span>
+  </div>
+
+  <div class="swatch">
+    <div class="color-box bordered" style="background:#e8c8c0"></div>
+    <span class="color-name">Róż pudrowy</span>
+    <span class="color-hex">#e8c8c0</span>
+  </div>
+
+  <div class="swatch">
+    <div class="color-box bordered" style="background:#d4a0a0"></div>
+    <span class="color-name">Róż piwonii</span>
+    <span class="color-hex">#d4a0a0</span>
+  </div>
+
+  <div class="swatch">
+    <div class="color-box bordered" style="background:#b07878"></div>
+    <span class="color-name">Róż głęboki</span>
+    <span class="color-hex">#b07878</span>
+  </div>
+
+  <div class="swatch">
+    <div class="color-box" style="background:#8a9e6a"></div>
+    <span class="color-name">Szałwia / zieleń</span>
+    <span class="color-hex">#8a9e6a</span>
+  </div>
+
+  <div class="swatch">
+    <div class="color-box" style="background:#6a8050"></div>
+    <span class="color-name">Zieleń liści</span>
+    <span class="color-hex">#6a8050</span>
+  </div>
+
+  <div class="swatch">
+    <div class="color-box bordered" style="background:#d4c8a8"></div>
+    <span class="color-name">Świeca / złocień</span>
+    <span class="color-hex">#d4c8a8</span>
+  </div>
+
+  <div class="swatch">
+    <div class="color-box bordered" style="background:#c8b090"></div>
+    <span class="color-name">Podłoga drewniana</span>
+    <span class="color-hex">#c8b090</span>
+  </div>
+
+  <div class="swatch">
+    <div class="color-box" style="background:#6b3a3a"></div>
+    <span class="color-name">Burgund / ciemna róża</span>
+    <span class="color-hex">#6b3a3a</span>
+  </div>
+
+</div>
+
+</body>
+</html>
