@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel świadków · Adrian & Nicole</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Cinzel:wght@400;500&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f3ee;
+      --panel: #fffdf9;
+      --dark: #2a2018;
+      --mid: #6b5c4e;
+      --muted: #9a8878;
+      --accent: #8b6b4a;
+      --green: #3d4f35;
+      --border: rgba(139, 107, 74, 0.22);
+      --error: #9b3f3f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--dark);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+    }
+
+    main {
+      width: min(100% - 2rem, 760px);
+      margin: 0 auto;
+      padding: 4rem 0 6rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 8vw, 4.8rem);
+      line-height: 1;
+      margin: 0.6rem 0 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin: 0 0 1.25rem;
+    }
+
+    .intro {
+      color: var(--mid);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .notice,
+    .card {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: clamp(1.25rem, 5vw, 2rem);
+      margin-bottom: 1.25rem;
+    }
+
+    .notice {
+      color: var(--mid);
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+
+    .notice strong {
+      color: var(--dark);
+    }
+
+    .field {
+      display: grid;
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      color: var(--mid);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--dark);
+      font: inherit;
+      padding: 0.85rem 1rem;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 1rem;
+    }
+
+    .dynamic-list {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .dynamic-row {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 0.8fr auto;
+      gap: 0.65rem;
+      align-items: end;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+
+    .dynamic-row.transport-row {
+      grid-template-columns: 1.5fr 0.8fr auto;
+    }
+
+    .new-entry {
+      border: 1px dashed var(--border);
+      background: rgba(139, 107, 74, 0.035);
+      margin-top: 1.25rem;
+      padding: 1rem;
+    }
+
+    .new-entry-title {
+      color: var(--dark);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      margin: 0 0 0.8rem;
+    }
+
+    .new-entry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 0.8fr;
+      gap: 0.65rem;
+    }
+
+    .new-entry-grid.transport {
+      grid-template-columns: 1.5fr 0.8fr;
+    }
+
+    select {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--dark);
+      font: inherit;
+      padding: 0.85rem 1rem;
+    }
+
+    .add-button,
+    .remove-button {
+      background: transparent;
+      color: var(--green);
+    }
+
+    .add-button {
+      margin-top: 0.25rem;
+    }
+
+    .remove-button {
+      border-color: var(--border);
+      color: var(--error);
+      padding-left: 0.9rem;
+      padding-right: 0.9rem;
+    }
+
+    button,
+    .back-link {
+      border: 1px solid var(--green);
+      background: var(--green);
+      color: white;
+      cursor: pointer;
+      display: inline-flex;
+      font: inherit;
+      font-size: 0.72rem;
+      font-weight: 500;
+      justify-content: center;
+      letter-spacing: 0.1em;
+      padding: 0.95rem 1.4rem;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    button:disabled {
+      cursor: wait;
+      opacity: 0.55;
+    }
+
+    .back-link {
+      background: transparent;
+      color: var(--green);
+      margin-left: 0.5rem;
+    }
+
+    .status {
+      color: var(--mid);
+      font-size: 0.82rem;
+      line-height: 1.5;
+      margin-top: 1rem;
+      min-height: 1.25rem;
+    }
+
+    .status.error {
+      color: var(--error);
+    }
+
+    .save-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 3;
+      border: 1px solid var(--border);
+      background: rgba(247, 243, 238, 0.96);
+      box-shadow: 0 -12px 32px rgba(42, 32, 24, 0.08);
+      margin-top: 1.25rem;
+      padding: 1rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .save-bar .status {
+      margin: 0 0 0.75rem;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 560px) {
+      main {
+        padding-top: 2.5rem;
+      }
+
+      .time-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dynamic-row,
+      .dynamic-row.transport-row,
+      .new-entry-grid,
+      .new-entry-grid.transport {
+        grid-template-columns: 1fr;
+      }
+
+      button,
+      .back-link {
+        width: 100%;
+      }
+
+      .back-link {
+        margin: 0.6rem 0 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <p class="eyebrow">Adrian &amp; Nicole</p>
+    <h1>Panel świadków</h1>
+    <p class="intro">Tutaj możecie zmienić godziny programu uroczystości oraz odjazdów busa. Po zapisaniu nowe
+      godziny pojawią się na polskiej i niemieckiej wersji strony.</p>
+
+    <div class="notice" id="mode-notice" hidden>
+      <strong>Tryb lokalny:</strong> Supabase nie jest jeszcze skonfigurowany. Zmiany zapiszą się wyłącznie w tej
+      przeglądarce. Instrukcja uruchomienia wspólnej synchronizacji znajduje się w pliku
+      <code>supabase-setup.sql</code>.
+    </div>
+
+    <form class="card" id="login-form" hidden>
+      <h2>Logowanie</h2>
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="username" required />
+      </div>
+      <div class="field">
+        <label for="password">Hasło</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required />
+      </div>
+      <button type="submit">Zaloguj się</button>
+      <p class="status" id="login-status" aria-live="polite"></p>
+    </form>
+
+    <form id="editor" hidden>
+      <section class="card">
+        <h2>Nasz dzień</h2>
+        <div class="time-grid" id="timeline-fields"></div>
+      </section>
+
+      <section class="card">
+        <h2>Dodatkowe punkty programu</h2>
+        <div class="dynamic-list" id="custom-item-fields"></div>
+        <div class="new-entry">
+          <p class="new-entry-title">Nowy punkt programu</p>
+          <div class="new-entry-grid">
+            <div class="field">
+              <label for="new-custom-day">Dzień</label>
+              <select id="new-custom-day">
+                <option value="saturday">Sobota</option>
+                <option value="sunday">Niedziela</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="new-custom-name">Nazwa punktu</label>
+              <input id="new-custom-name" placeholder="np. Pokaz zdjęć">
+            </div>
+            <div class="field">
+              <label for="new-custom-time">Godzina</label>
+              <input id="new-custom-time" type="time" step="300" value="12:00">
+            </div>
+          </div>
+          <button class="add-button" id="add-custom-item" type="button">Dodaj ten punkt do listy</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Transport po weselu</h2>
+        <div class="dynamic-list" id="transport-fields"></div>
+        <div class="new-entry">
+          <p class="new-entry-title">Nowa możliwość transportu</p>
+          <div class="new-entry-grid transport">
+            <div class="field">
+              <label for="new-transport-name">Nazwa lub osoba</label>
+              <input id="new-transport-name" placeholder="np. Bus lub Kornel – 4 miejsca">
+            </div>
+            <div class="field">
+              <label for="new-transport-time">Godzina</label>
+              <input id="new-transport-time" type="time" step="300" value="01:00">
+            </div>
+          </div>
+          <button class="add-button" id="add-transport" type="button">Dodaj ten transport do listy</button>
+        </div>
+      </section>
+
+      <div class="save-bar">
+        <p class="status" id="save-status" aria-live="polite">Po zakończeniu edycji opublikuj wszystkie zmiany.</p>
+        <button type="submit" id="save-button">Opublikuj wszystkie zmiany</button>
+        <a class="back-link" href="index.html">Wróć na stronę</a>
+      </div>
+    </form>
+  </main>
+
+  <script src="schedule-config.js"></script>
+  <script src="schedule.js"></script>
+  <script>
+    const labels = {
+      'sat-ceremony': 'Sobota · Ceremonia',
+      'sat-thanks': 'Sobota · Podziękowania',
+      'sat-reception': 'Sobota · Przyjęcie i obiad',
+      'sat-first-dance': 'Sobota · Pierwszy taniec',
+      'sat-cake': 'Sobota · Tort',
+      'sat-midnight': 'Sobota · Oczepiny',
+      'sat-end': 'Sobota · Koniec zabawy',
+      'sun-reception': 'Niedziela · Poprawiny',
+      'sun-end': 'Niedziela · Koniec poprawin'
+    };
+
+    const loginForm = document.getElementById('login-form');
+    const editor = document.getElementById('editor');
+    const loginStatus = document.getElementById('login-status');
+    const saveStatus = document.getElementById('save-status');
+    const saveButton = document.getElementById('save-button');
+    let accessToken = null;
+    let editorReady = false;
+
+    function setStatus(element, message, isError = false) {
+      element.textContent = message;
+      element.classList.toggle('error', isError);
+    }
+
+    function createField(name, label, value) {
+      const field = document.createElement('div');
+      field.className = 'field';
+      field.innerHTML = `
+        <label for="${name}">${label}</label>
+        ${createTimeInput(name, value)}
+      `;
+      return field;
+    }
+
+    function createTimeInput(name, value = '') {
+      const normalized = value === '24:00' ? '00:00' : value;
+      return `<input id="${name}" name="${name}" type="time" step="300" value="${normalized}" required>`;
+    }
+
+    function createCustomItemRow(item = { day: 'saturday', name: '', time: '' }) {
+      const row = document.createElement('div');
+      row.className = 'dynamic-row custom-item-row';
+      row.innerHTML = `
+        <div class="field">
+          <label>Dzień</label>
+          <select class="custom-day">
+            <option value="saturday"${item.day === 'saturday' ? ' selected' : ''}>Sobota</option>
+            <option value="sunday"${item.day === 'sunday' ? ' selected' : ''}>Niedziela</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Nazwa punktu</label>
+          <input class="custom-name" value="${escapeAttribute(item.name)}" required>
+        </div>
+        <div class="field">
+          <label>Godzina</label>
+          ${createTimeInput('', item.time).replace('id="" name=""', 'class="custom-time"')}
+        </div>
+        <button class="remove-button" type="button" aria-label="Usuń punkt">Usuń</button>
+      `;
+      return row;
+    }
+
+    function createTransportRow(item = { name: '', time: '' }) {
+      const row = document.createElement('div');
+      row.className = 'dynamic-row transport-row';
+      row.innerHTML = `
+        <div class="field">
+          <label>Nazwa lub osoba</label>
+          <input class="transport-name" value="${escapeAttribute(item.name)}" placeholder="np. Bus lub Kornel – 4 miejsca" required>
+        </div>
+        <div class="field">
+          <label>Godzina</label>
+          ${createTimeInput('', item.time).replace('id="" name=""', 'class="transport-time"')}
+        </div>
+        <button class="remove-button" type="button" aria-label="Usuń transport">Usuń</button>
+      `;
+      return row;
+    }
+
+    function escapeAttribute(value) {
+      return String(value || '').replace(/[&"<]/g, (character) => ({
+        '&': '&amp;',
+        '"': '&quot;',
+        '<': '&lt;'
+      }[character]));
+    }
+
+    function sortEditorRows() {
+      const customContainer = document.getElementById('custom-item-fields');
+      [...customContainer.children].sort((a, b) => {
+        const aDay = a.querySelector('.custom-day').value;
+        const bDay = b.querySelector('.custom-day').value;
+        return aDay.localeCompare(bDay) ||
+          sortTime(a.querySelector('.custom-time').value, aDay) -
+          sortTime(b.querySelector('.custom-time').value, bDay);
+      }).forEach((row) => customContainer.append(row));
+
+      const transportContainer = document.getElementById('transport-fields');
+      [...transportContainer.children].sort((a, b) =>
+        sortTime(a.querySelector('.transport-time').value) -
+        sortTime(b.querySelector('.transport-time').value)
+      ).forEach((row) => transportContainer.append(row));
+    }
+
+    function sortTime(time, day = '') {
+      const [hours = 0, minutes = 0] = time.split(':').map(Number);
+      const value = hours * 60 + minutes;
+      return day === 'saturday' && hours < 10 ? value + 1440 : value;
+    }
+
+    async function showEditor() {
+      const data = await WeddingSchedule.load();
+      const timelineFields = document.getElementById('timeline-fields');
+      const customItemFields = document.getElementById('custom-item-fields');
+      const transportFields = document.getElementById('transport-fields');
+      timelineFields.innerHTML = '';
+      customItemFields.innerHTML = '';
+      transportFields.innerHTML = '';
+
+      Object.entries(labels).forEach(([key, label]) => {
+        timelineFields.append(createField(`timeline-${key}`, label, data.timeline[key]));
+      });
+      data.customItems.forEach((item) => customItemFields.append(createCustomItemRow(item)));
+      data.transport.forEach((item) => transportFields.append(createTransportRow(item)));
+      sortEditorRows();
+      document.getElementById('new-custom-time').value = '12:00';
+      document.getElementById('new-transport-time').value = '01:00';
+
+      loginForm.hidden = true;
+      editor.hidden = false;
+      editorReady = true;
+    }
+
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      setStatus(loginStatus, 'Logowanie…');
+      try {
+        const session = await WeddingSchedule.login(loginForm.email.value, loginForm.password.value);
+        accessToken = session.access_token;
+        await showEditor();
+      } catch (error) {
+        setStatus(loginStatus, error.message, true);
+      }
+    });
+
+    document.getElementById('add-custom-item').addEventListener('click', () => {
+      const name = document.getElementById('new-custom-name');
+      if (!name.value.trim()) {
+        name.focus();
+        setStatus(saveStatus, 'Najpierw wpisz nazwę nowego punktu.', true);
+        return;
+      }
+      document.getElementById('custom-item-fields').append(createCustomItemRow({
+        day: document.getElementById('new-custom-day').value,
+        name: name.value.trim(),
+        time: document.getElementById('new-custom-time').value
+      }));
+      sortEditorRows();
+      name.value = '';
+      setStatus(saveStatus, 'Punkt dodano do listy. Opublikuj wszystkie zmiany, aby pokazać go gościom.');
+    });
+
+    document.getElementById('add-transport').addEventListener('click', () => {
+      const name = document.getElementById('new-transport-name');
+      if (!name.value.trim()) {
+        name.focus();
+        setStatus(saveStatus, 'Najpierw wpisz nazwę transportu lub osobę.', true);
+        return;
+      }
+      document.getElementById('transport-fields').append(createTransportRow({
+        name: name.value.trim(),
+        time: document.getElementById('new-transport-time').value
+      }));
+      sortEditorRows();
+      name.value = '';
+      setStatus(saveStatus, 'Transport dodano do listy. Opublikuj wszystkie zmiany, aby pokazać go gościom.');
+    });
+
+    editor.addEventListener('click', (event) => {
+      const button = event.target.closest('.remove-button');
+      if (button) {
+        button.closest('.dynamic-row').remove();
+        setStatus(saveStatus, 'Pozycję usunięto z listy. Opublikuj wszystkie zmiany, aby zatwierdzić.');
+      }
+    });
+
+    editor.addEventListener('change', (event) => {
+      if (editorReady && !event.target.closest('.new-entry')) {
+        sortEditorRows();
+        setStatus(saveStatus, 'Masz niezapisane zmiany. Kliknij „Opublikuj wszystkie zmiany”.');
+      }
+    });
+
+    editor.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      saveButton.disabled = true;
+      setStatus(saveStatus, 'Zapisywanie…');
+      try {
+        const timeline = {};
+        Object.keys(labels).forEach((key) => {
+          timeline[key] = editor.elements[`timeline-${key}`].value;
+        });
+        const customItems = [...document.querySelectorAll('.custom-item-row')].map((row) => ({
+          day: row.querySelector('.custom-day').value,
+          name: row.querySelector('.custom-name').value.trim(),
+          time: row.querySelector('.custom-time').value
+        }));
+        const transport = [...document.querySelectorAll('.transport-row')].map((row) => ({
+          name: row.querySelector('.transport-name').value.trim(),
+          time: row.querySelector('.transport-time').value
+        }));
+        await WeddingSchedule.save({ timeline, customItems, transport }, accessToken);
+        setStatus(saveStatus, 'Zmiany zostały opublikowane.');
+      } catch (error) {
+        setStatus(saveStatus, error.message, true);
+      } finally {
+        saveButton.disabled = false;
+      }
+    });
+
+    if (WeddingSchedule.isConfigured()) {
+      loginForm.hidden = false;
+    } else {
+      document.getElementById('mode-notice').hidden = false;
+      accessToken = 'local';
+      showEditor().catch((error) => setStatus(saveStatus, error.message, true));
+    }
+  </script>
+</body>
+
+</html>
