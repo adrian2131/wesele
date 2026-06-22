@@ -5,11 +5,13 @@
     timeline: {
       'sat-ceremony': '14:00',
       'sat-thanks': '15:00',
-      'sat-reception': '16:00',
+      'sat-reception': '16:30',
       'sat-first-dance': '17:30',
+      'sat-animator': '17:30',
       'sat-cake': '22:00',
       'sat-midnight': '24:00',
       'sat-end': '04:00',
+      'sun-snacks': '08:00',
       'sun-reception': '12:00',
       'sun-end': '17:00'
     },

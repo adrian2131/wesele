@@ -93,6 +93,7 @@
     .field {
       display: grid;
       gap: 0.45rem;
+      min-width: 0;
       margin-bottom: 1rem;
     }
 
@@ -169,6 +170,8 @@
     }
 
     select {
+      min-width: 0;
+      max-width: 100%;
       width: 100%;
       border: 1px solid var(--border);
       background: #fff;
@@ -334,7 +337,7 @@
             </div>
             <div class="field">
               <label for="new-custom-time">Godzina</label>
-              <input id="new-custom-time" type="time" step="300" value="12:00">
+              <select id="new-custom-time"></select>
             </div>
           </div>
           <button class="add-button" id="add-custom-item" type="button">Dodaj ten punkt do listy</button>
@@ -353,7 +356,7 @@
             </div>
             <div class="field">
               <label for="new-transport-time">Godzina</label>
-              <input id="new-transport-time" type="time" step="300" value="01:00">
+              <select id="new-transport-time"></select>
             </div>
           </div>
           <button class="add-button" id="add-transport" type="button">Dodaj ten transport do listy</button>
@@ -376,9 +379,11 @@
       'sat-thanks': 'Sobota · Podziękowania',
       'sat-reception': 'Sobota · Przyjęcie i obiad',
       'sat-first-dance': 'Sobota · Pierwszy taniec',
+      'sat-animator': 'Sobota · Animatorka dla dzieci',
       'sat-cake': 'Sobota · Tort',
       'sat-midnight': 'Sobota · Oczepiny',
       'sat-end': 'Sobota · Koniec zabawy',
+      'sun-snacks': 'Niedziela · Przekąski pod grzybkiem',
       'sun-reception': 'Niedziela · Poprawiny',
       'sun-end': 'Niedziela · Koniec poprawin'
     };
@@ -401,14 +406,26 @@
       field.className = 'field';
       field.innerHTML = `
         <label for="${name}">${label}</label>
-        ${createTimeInput(name, value)}
+        ${createTimeSelect(name, value)}
       `;
       return field;
     }
 
-    function createTimeInput(name, value = '') {
-      const normalized = value === '24:00' ? '00:00' : value;
-      return `<input id="${name}" name="${name}" type="time" step="300" value="${normalized}" required>`;
+    function createTimeSelect(name, value = '') {
+      return `<select id="${name}" name="${name}" required>${timeOptions(value)}</select>`;
+    }
+
+    function timeOptions(selected = '') {
+      const values = [];
+      for (let minutes = 0; minutes <= 1440; minutes += 15) {
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        values.push(`${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}`);
+      }
+      if (selected && !values.includes(selected)) values.push(selected);
+      return values.map((value) =>
+        `<option value="${value}"${value === selected ? ' selected' : ''}>${value}</option>`
+      ).join('');
     }
 
     function createCustomItemRow(item = { day: 'saturday', name: '', time: '' }) {
@@ -428,7 +445,7 @@
         </div>
         <div class="field">
           <label>Godzina</label>
-          ${createTimeInput('', item.time).replace('id="" name=""', 'class="custom-time"')}
+          ${createTimeSelect('', item.time).replace('id="" name=""', 'class="custom-time"')}
         </div>
         <button class="remove-button" type="button" aria-label="Usuń punkt">Usuń</button>
       `;
@@ -445,7 +462,7 @@
         </div>
         <div class="field">
           <label>Godzina</label>
-          ${createTimeInput('', item.time).replace('id="" name=""', 'class="transport-time"')}
+          ${createTimeSelect('', item.time).replace('id="" name=""', 'class="transport-time"')}
         </div>
         <button class="remove-button" type="button" aria-label="Usuń transport">Usuń</button>
       `;
@@ -498,8 +515,8 @@
       data.customItems.forEach((item) => customItemFields.append(createCustomItemRow(item)));
       data.transport.forEach((item) => transportFields.append(createTransportRow(item)));
       sortEditorRows();
-      document.getElementById('new-custom-time').value = '12:00';
-      document.getElementById('new-transport-time').value = '01:00';
+      document.getElementById('new-custom-time').innerHTML = timeOptions('12:00');
+      document.getElementById('new-transport-time').innerHTML = timeOptions('01:00');
 
       loginForm.hidden = true;
       editor.hidden = false;

@@ -10,11 +10,13 @@ values (
     "timeline": {
       "sat-ceremony": "14:00",
       "sat-thanks": "15:00",
-      "sat-reception": "16:00",
+      "sat-reception": "16:30",
       "sat-first-dance": "17:30",
+      "sat-animator": "17:30",
       "sat-cake": "22:00",
       "sat-midnight": "24:00",
       "sat-end": "04:00",
+      "sun-snacks": "08:00",
       "sun-reception": "12:00",
       "sun-end": "17:00"
     },
@@ -31,13 +33,29 @@ on conflict (id) do nothing;
 
 alter table public.wedding_schedule enable row level security;
 
+drop policy if exists "public schedule read" on public.wedding_schedule;
 create policy "public schedule read"
 on public.wedding_schedule for select
 to anon, authenticated
 using (true);
 
-create policy "authenticated schedule update"
+drop policy if exists "authenticated schedule update" on public.wedding_schedule;
+drop policy if exists "wedding admins schedule update" on public.wedding_schedule;
+create policy "wedding admins schedule update"
 on public.wedding_schedule for update
 to authenticated
-using (true)
-with check (true);
+using (
+  id = 'main'
+  and (auth.jwt() -> 'app_metadata' ->> 'role') = 'wedding_admin'
+)
+with check (
+  id = 'main'
+  and (auth.jwt() -> 'app_metadata' ->> 'role') = 'wedding_admin'
+);
+
+-- Po utworzeniu kont świadków nadaj im rolę administratora.
+-- Zmień adresy e-mail przed uruchomieniem tych poleceń.
+update auth.users
+set raw_app_meta_data = coalesce(raw_app_meta_data, '{}'::jsonb)
+  || '{"role": "wedding_admin"}'::jsonb
+where email in ('SWIADKOWA_EMAIL', 'SWIADEK_EMAIL');

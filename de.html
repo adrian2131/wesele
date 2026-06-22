@@ -1060,8 +1060,25 @@
     .witness-photo img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: var(--witness-fit, cover);
+      object-position: center;
+      transform: translate(var(--witness-shift-x, 0), var(--witness-shift-y, 0)) scale(var(--witness-scale, 1));
       display: block;
+    }
+
+    .witness-photo img.witness-sara {
+      --witness-fit: cover;
+      --witness-scale: 1;
+    }
+
+    .witness-photo img.witness-kornel {
+      --witness-fit: cover;
+      --witness-shift-y: -9%;
+      --witness-scale: 1.08;
+    }
+
+    .witness-photo img+.witness-placeholder {
+      display: none;
     }
 
     .witness-placeholder {
@@ -1732,7 +1749,7 @@
                 <span class="pt-name">Empfang und Essen</span>
                 <span class="pt-desc">Beginn der Hochzeitsfeier im Ranczo Radzicz</span>
               </div>
-              <span class="pt-time" data-schedule-key="sat-reception">16:00</span>
+              <span class="pt-time" data-schedule-key="sat-reception">16:30</span>
             </div>
 
             <div class="pt-item">
@@ -1747,6 +1764,15 @@
             <div class="pt-item">
               <span class="pt-idx">05</span>
               <div class="pt-body">
+                <span class="pt-name">Kinderbetreuung</span>
+                <span class="pt-desc">Spiele und Betreuung für die Kinder für etwa 2,5-3 Stunden</span>
+              </div>
+              <span class="pt-time" data-schedule-key="sat-animator">17:30</span>
+            </div>
+
+            <div class="pt-item">
+              <span class="pt-idx">06</span>
+              <div class="pt-body">
                 <span class="pt-name">Hochzeitstorte</span>
                 <span class="pt-desc">Eine süße Köstlichkeit</span>
               </div>
@@ -1754,7 +1780,7 @@
             </div>
 
             <div class="pt-item">
-              <span class="pt-idx">06</span>
+              <span class="pt-idx">07</span>
               <div class="pt-body">
                 <span class="pt-name">Mitternachtstradition</span>
                 <span class="pt-desc">Musik, Tanz und Unterhaltung bis zum Morgengrauen</span>
@@ -1763,7 +1789,7 @@
             </div>
 
             <div class="pt-item">
-              <span class="pt-idx">07</span>
+              <span class="pt-idx">08</span>
               <div class="pt-body">
                 <span class="pt-name">Ende der Feier</span>
                 <span class="pt-desc">Bis zur Feier am nächsten Tag!</span>
@@ -1783,6 +1809,15 @@
             <div class="pt-item">
               <span class="pt-idx">01</span>
               <div class="pt-body">
+                <span class="pt-name">Snacks unter dem Pavillon</span>
+                <span class="pt-desc">Morgendliche Snacks für die Gäste auf dem Gelände des Ranczo Radzicz</span>
+              </div>
+              <span class="pt-time" data-schedule-key="sun-snacks">08:00</span>
+            </div>
+
+            <div class="pt-item">
+              <span class="pt-idx">02</span>
+              <div class="pt-body">
                 <span class="pt-name">Feier am nächsten Tag</span>
                 <span class="pt-desc">Essen, Erinnerungen und weitere gemeinsame Stunden im Ranczo Radzicz</span>
               </div>
@@ -1790,7 +1825,7 @@
             </div>
 
             <div class="pt-item">
-              <span class="pt-idx">02</span>
+              <span class="pt-idx">03</span>
               <div class="pt-body">
                 <span class="pt-name">Auf Wiedersehen!</span>
                 <span class="pt-desc">Danke, dass ihr mit uns gefeiert habt</span>
@@ -1860,8 +1895,9 @@
             </svg>
           </div>
           <div class="info-title">Unterkunft in der Nähe</div>
-          <div class="info-text">Über die Unterkünfte informieren wir jeden persönlich. Falls ihr noch Fragen
-            dazu habt, wendet euch bitte an unsere Trauzeugen.</div>
+          <div class="info-text">Für Gäste, die im Ranczo Radzicz übernachten, endet die Hotelzeit am Sonntag um
+            11:00 Uhr. Gäste, die in Moryń übernachten, werden mit Bussen gefahren. Bei Fragen wendet euch bitte
+            an unsere Trauzeugen.</div>
         </div>
 
         <div class="info-card">
@@ -1875,7 +1911,8 @@
           </div>
           <div class="info-title">Taxi / transport</div>
           <div class="info-text">Der Transport von den Unterkünften zur Feier und zurück wird organisiert. Die
-            aktuellen Abfahrtszeiten findet ihr im Fahrplan oben.</div>
+            aktuellen Buszeiten sowie private Personen, die Gäste mitnehmen können, findet ihr im Fahrplan
+            oben.</div>
         </div>
 
       </div>
@@ -1944,7 +1981,7 @@
       <div class="witness-grid">
         <article class="witness-card">
           <div class="witness-photo">
-            <!-- Podmień później na: <img src="swiadek-1.jpg" alt="Imię i nazwisko świadka"> -->
+            <img class="witness-sara" src="swiadek-1.jpg" alt="Sara">
             <div class="witness-placeholder" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
                 <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.4" />
@@ -1959,7 +1996,7 @@
 
         <article class="witness-card">
           <div class="witness-photo">
-            <!-- Podmień później na: <img src="swiadek-2.jpg" alt="Imię i nazwisko świadka"> -->
+            <img class="witness-kornel" src="swiadek-2.jpg" alt="Kornel">
             <div class="witness-placeholder" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
                 <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.4" />
