@@ -9,6 +9,7 @@
       'sat-first-dance': '17:30',
       'sat-animator': '17:30',
       'sat-cake': '22:00',
+      'sat-parents': '23:00',
       'sat-midnight': '24:00',
       'sat-end': '04:00',
       'sun-snacks': '08:00',
