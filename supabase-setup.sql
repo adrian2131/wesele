@@ -33,6 +33,9 @@ on conflict (id) do nothing;
 
 alter table public.wedding_schedule enable row level security;
 
+grant select on public.wedding_schedule to anon, authenticated;
+grant update on public.wedding_schedule to authenticated;
+
 drop policy if exists "public schedule read" on public.wedding_schedule;
 create policy "public schedule read"
 on public.wedding_schedule for select
@@ -58,4 +61,4 @@ with check (
 update auth.users
 set raw_app_meta_data = coalesce(raw_app_meta_data, '{}'::jsonb)
   || '{"role": "wedding_admin"}'::jsonb
-where email in ('SWIADKOWA_EMAIL', 'SWIADEK_EMAIL');
+where email in ('domaradzki.adrian@gmail.com');
