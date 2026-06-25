@@ -185,7 +185,7 @@
       letter-spacing: 0.04em;
       line-height: 1.08;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       margin-left: auto;
       margin-right: auto;
       max-width: 980px;
@@ -1074,7 +1074,7 @@
     .witness-photo img.witness-kornel {
       --witness-fit: cover;
       --witness-shift-y: -9%;
-      --witness-scale: 1.08;
+      --witness-scale: 1.3;
     }
 
     .witness-photo img+.witness-placeholder {
@@ -1225,7 +1225,7 @@
       }
 
       .hero-photo {
-        background-position: 46% 36%;
+        background-position: 290% 500%;
       }
 
       .hero-nav {
@@ -1534,7 +1534,6 @@
       <a href="#plan">Ablauf</a>
       <a href="#dojazd">Unterkunft</a>
       <a href="#whatsapp">Kontakt</a>
-      <a href="#historia">Über uns</a>
       <a href="admin.html">Trauzeugenbereich</a>
     </div>
 
@@ -1563,12 +1562,12 @@
     <div class="quick-grid">
       <a class="quick-item" href="#ceremonia">
         <span class="quick-label">Trauung</span>
-        <span class="quick-value">14:00</span>
+        <span class="quick-value" data-schedule-key="sat-ceremony">14:00</span>
         <span class="quick-note">Heilig-Geist-Kirche</span>
       </a>
       <a class="quick-item" href="#przyjecie">
         <span class="quick-label">Hochzeitsfeier</span>
-        <span class="quick-value">16:00</span>
+        <span class="quick-value" data-schedule-key="sat-reception">16:30</span>
         <span class="quick-note">Ranczo Radzicz</span>
       </a>
       <a class="quick-item" href="#plan">
@@ -1639,7 +1638,7 @@
         <div class="ceremony-details">
           <div class="ceremony-detail">
             <span class="ceremony-label">Uhrzeit</span>
-            <span class="ceremony-value">Samstag · 14:00 Uhr</span>
+            <span class="ceremony-value">Samstag · <span data-schedule-key="sat-ceremony">14:00</span> Uhr</span>
           </div>
         </div>
 
@@ -1729,7 +1728,8 @@
               <span class="pt-idx">01</span>
               <div class="pt-body">
                 <span class="pt-name">Trauung</span>
-                <span class="pt-desc">Kirchliche Trauung in der Heilig-Geist-Kirche in Moryń</span>
+                <span class="pt-desc">Kirchliche Trauung in der Heilig-Geist-Kirche in Moryń. Bitte kommt spätestens
+                  10 Minuten vor Beginn.</span>
               </div>
               <span class="pt-time" data-schedule-key="sat-ceremony">14:00</span>
             </div>
@@ -1737,8 +1737,8 @@
             <div class="pt-item">
               <span class="pt-idx">02</span>
               <div class="pt-body">
-                <span class="pt-name">Danksagung</span>
-                <span class="pt-desc">Gemeinsames Foto und Danksagung vor der Kirche</span>
+                <span class="pt-name">Glückwünsche</span>
+                <span class="pt-desc">Gemeinsames Foto und Glückwünsche vor der Kirche</span>
               </div>
               <span class="pt-time" data-schedule-key="sat-thanks">15:00</span>
             </div>
@@ -1909,56 +1909,12 @@
               <line x1="10" y1="14" x2="14" y2="14" />
             </svg>
           </div>
-          <div class="info-title">Taxi / transport</div>
+          <div class="info-title">Shuttle / Transport</div>
           <div class="info-text">Der Transport von den Unterkünften zur Feier und zurück wird organisiert. Die
             aktuellen Buszeiten sowie private Personen, die Gäste mitnehmen können, findet ihr im Fahrplan
             oben.</div>
         </div>
 
-      </div>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════
-     NASZA HISTORIA
-════════════════════════════════ -->
-  <div class="section" id="historia">
-    <p class="s-eye">Unsere Geschichte</p>
-    <h2 class="s-title">Wie alles begann</h2>
-    <p class="s-sub">Eine kurze Geschichte über zwei Menschen, die sich am falschen Ort zur falschen Zeit
-      begegneten und damit wunderbar richtig lagen.</p>
-    <div class="s-rule"></div>
-
-    <div class="story-list">
-      <div class="story-row">
-        <div class="story-year">2023</div>
-        <div class="story-box">
-          <h3>Erste Begegnung</h3>
-          <p>Ein Treffen am späten Freitagabend in der Tür einer Berliner Basilika.</p>
-        </div>
-      </div>
-      <div class="story-row">
-        <div class="story-year">2024</div>
-        <div class="story-box">
-          <h3>Erstes Date</h3>
-          <p>In vier Worten: Abend, Strand, Lagerfeuer und blaue Flecken vom Schlittschuhlaufen.</p>
-        </div>
-      </div>
-      <div class="story-row">
-        <div class="story-year">2025</div>
-        <div class="story-box">
-          <h3>Verlobung</h3>
-          <p>Stellt es euch so vor: Korsika, wunderschöne Klippen, Sonnenuntergang und natürlich eine Frau,
-            die alles vorausgesehen hat, sowie ein Mann, der PLÖTZLICH sein Oberteil wechselt und sagt:
-            „Komm, noch ein Foto."</p>
-        </div>
-      </div>
-      <div class="story-row">
-        <div class="story-year">2026</div>
-        <div class="story-box">
-          <h3>Und schon bald…</h3>
-          <p>Am 15. August 2026 sagen wir JA und freuen uns, dass ihr diesen besonderen Tag mit uns verbringt.</p>
-        </div>
       </div>
     </div>
   </div>

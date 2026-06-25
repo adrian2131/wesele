@@ -185,7 +185,7 @@
       letter-spacing: 0.04em;
       line-height: 1.08;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       margin-left: auto;
       margin-right: auto;
       max-width: 980px;
@@ -1225,7 +1225,7 @@
       }
 
       .hero-photo {
-        background-position: 46% 36%;
+        background-position: 290% 500%;
       }
 
       .hero-nav {
@@ -1534,7 +1534,6 @@
       <a href="#plan">Plan</a>
       <a href="#dojazd">Noclegi</a>
       <a href="#whatsapp">Kontakt</a>
-      <a href="#historia">O nas</a>
       <a href="admin.html">Panel świadków</a>
     </div>
 
@@ -1563,12 +1562,12 @@
     <div class="quick-grid">
       <a class="quick-item" href="#ceremonia">
         <span class="quick-label">Ceremonia</span>
-        <span class="quick-value">14:00</span>
+        <span class="quick-value" data-schedule-key="sat-ceremony">14:00</span>
         <span class="quick-note">Kościół pw. św. Ducha</span>
       </a>
       <a class="quick-item" href="#przyjecie">
         <span class="quick-label">Przyjęcie</span>
-        <span class="quick-value">16:30</span>
+        <span class="quick-value" data-schedule-key="sat-reception">16:30</span>
         <span class="quick-note">Ranczo Radzicz</span>
       </a>
       <a class="quick-item" href="#plan">
@@ -1639,7 +1638,7 @@
         <div class="ceremony-details">
           <div class="ceremony-detail">
             <span class="ceremony-label">Godzina</span>
-            <span class="ceremony-value">Sobota · 14:00</span>
+            <span class="ceremony-value">Sobota · <span data-schedule-key="sat-ceremony">14:00</span></span>
           </div>
         </div>
 
@@ -1729,7 +1728,8 @@
               <span class="pt-idx">01</span>
               <div class="pt-body">
                 <span class="pt-name">Ceremonia</span>
-                <span class="pt-desc">Ślub w kościele pw. św. Ducha w Moryniu</span>
+                <span class="pt-desc">Ślub w kościele pw. św. Ducha w Moryniu, bardzo prosimy o przybycie najpóźniej
+                  10 min przed rozpoczęciem</span>
               </div>
               <span class="pt-time" data-schedule-key="sat-ceremony">14:00</span>
             </div>
@@ -1737,8 +1737,8 @@
             <div class="pt-item">
               <span class="pt-idx">02</span>
               <div class="pt-body">
-                <span class="pt-name">Sprawne zyczenia</span>
-                <span class="pt-desc">Wspólne zdjęcie i podziękowania przed kościołem</span>
+                <span class="pt-name">Życzenia</span>
+                <span class="pt-desc">Wspólne zdjęcie i życzenia przed kościołem</span>
               </div>
               <span class="pt-time" data-schedule-key="sat-thanks">15:00</span>
             </div>
@@ -1767,7 +1767,7 @@
                 <span class="pt-name">Animatorka dla dzieci</span>
                 <span class="pt-desc">Zabawy i opieka dla najmłodszych przez około 2,5-3 godziny</span>
               </div>
-              <span class="pt-time" data-schedule-key="sat-animator">17:00</span>
+              <span class="pt-time" data-schedule-key="sat-animator">17:30</span>
             </div>
 
             <div class="pt-item">
@@ -1809,8 +1809,8 @@
             <div class="pt-item">
               <span class="pt-idx">01</span>
               <div class="pt-body">
-                <span class="pt-name">Przekąski pod grzybkiem</span>
-                <span class="pt-desc">Poranne przekąski dla gości na terenie Ranczo Radzicz</span>
+                <span class="pt-name">Przekąski</span>
+                <span class="pt-desc">Poranne przekąski dla gości pod grzybkiem</span>
               </div>
               <span class="pt-time" data-schedule-key="sun-snacks">08:00</span>
             </div>
