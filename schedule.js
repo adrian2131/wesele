@@ -4,15 +4,16 @@
   const defaults = {
     timeline: {
       'sat-ceremony': '14:00',
-      'sat-thanks': '15:00',
-      'sat-reception': '16:30',
-      'sat-first-dance': '17:30',
-      'sat-animator': '17:30',
+      'sat-thanks': '16:30',
+      'sat-reception': '17:30',
+      'sat-first-dance': '18:00',
+      'sat-animator': '18:00',
+      'sat-photos': '19:00',
       'sat-cake': '22:00',
       'sat-parents': '23:00',
       'sat-midnight': '24:00',
       'sat-end': '04:00',
-      'sun-snacks': '08:00',
+      'sun-snacks': '09:00',
       'sun-reception': '12:00',
       'sun-end': '17:00'
     },
@@ -149,12 +150,19 @@
 
     const busList = document.getElementById('bus-times');
     if (busList) {
-      busList.innerHTML = normalized.transport.map((item) => `
-        <div class="bus-time">
-          <span class="bus-time-label">${escapeHtml(item.name)}</span>
-          <strong>${escapeHtml(item.time)}</strong>
-        </div>
-      `).join('');
+      if (!normalized.transport.length) {
+        // Pusta lista transportu zostawiłaby sam nagłówek sekcji bez treści.
+        busList.innerHTML = `<p class="bus-empty">${document.documentElement.lang === 'de'
+          ? 'Die Abfahrtszeiten geben wir in Kürze bekannt.'
+          : 'Godziny odjazdów podamy wkrótce.'}</p>`;
+      } else {
+        busList.innerHTML = normalized.transport.map((item) => `
+          <div class="bus-time">
+            <span class="bus-time-label">${escapeHtml(item.name)}</span>
+            <strong>${escapeHtml(item.time)}</strong>
+          </div>
+        `).join('');
+      }
     }
   }
 

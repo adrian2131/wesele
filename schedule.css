@@ -16,6 +16,13 @@
   margin-top: 2.5rem;
 }
 
+.bus-empty {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 .bus-time {
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.42);

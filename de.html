@@ -690,53 +690,6 @@
     }
 
     /* ════════════════════════════════
-       NASZA HISTORIA
-    ════════════════════════════════ */
-    .story-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    .story-row {
-      display: block;
-    }
-
-    .story-year {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: clamp(1.35rem, 3vw, 2rem);
-      color: var(--pink);
-      text-align: center;
-      padding-top: 0;
-      margin-bottom: 0.55rem;
-      letter-spacing: 0.05em;
-    }
-
-    .story-box {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.35rem 1.55rem;
-    }
-
-    .story-box h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.38rem;
-      font-weight: 400;
-      color: var(--dark);
-      margin-bottom: 0.45rem;
-    }
-
-    .story-box p {
-      font-size: 0.84rem;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    /* ════════════════════════════════
        PLAN DNIA — green bg, DreamDay style
     ════════════════════════════════ */
     /* ── PROGRAM DNIA — Styl 4 (numerowany) ── */
@@ -1567,7 +1520,7 @@
       </a>
       <a class="quick-item" href="#przyjecie">
         <span class="quick-label">Hochzeitsfeier</span>
-        <span class="quick-value" data-schedule-key="sat-reception">16:30</span>
+        <span class="quick-value" data-schedule-key="sat-reception">17:30</span>
         <span class="quick-note">Ranczo Radzicz</span>
       </a>
       <a class="quick-item" href="#plan">
@@ -1738,18 +1691,18 @@
               <span class="pt-idx">02</span>
               <div class="pt-body">
                 <span class="pt-name">Glückwünsche</span>
-                <span class="pt-desc">Gemeinsames Foto und Glückwünsche vor der Kirche</span>
+                <span class="pt-desc">Glückwünsche für das Brautpaar im Festsaal</span>
               </div>
-              <span class="pt-time" data-schedule-key="sat-thanks">15:00</span>
+              <span class="pt-time" data-schedule-key="sat-thanks">16:30</span>
             </div>
 
             <div class="pt-item">
               <span class="pt-idx">03</span>
               <div class="pt-body">
                 <span class="pt-name">Empfang und Essen</span>
-                <span class="pt-desc">Beginn der Hochzeitsfeier im Ranczo Radzicz</span>
+                <span class="pt-desc">Mittagessen im Ranczo Radzicz</span>
               </div>
-              <span class="pt-time" data-schedule-key="sat-reception">16:30</span>
+              <span class="pt-time" data-schedule-key="sat-reception">17:30</span>
             </div>
 
             <div class="pt-item">
@@ -1758,20 +1711,29 @@
                 <span class="pt-name">Eröffnungstanz</span>
                 <span class="pt-desc">Der erste Tanz des Brautpaares</span>
               </div>
-              <span class="pt-time" data-schedule-key="sat-first-dance">17:30</span>
+              <span class="pt-time" data-schedule-key="sat-first-dance">18:00</span>
             </div>
 
             <div class="pt-item">
               <span class="pt-idx">05</span>
               <div class="pt-body">
                 <span class="pt-name">Kinderbetreuung</span>
-                <span class="pt-desc">Spiele und Betreuung für die Kinder für etwa 2,5-3 Stunden</span>
+                <span class="pt-desc">Spiele und Betreuung für die Kinder im Freien, für etwa 2,5-3 Stunden</span>
               </div>
-              <span class="pt-time" data-schedule-key="sat-animator">17:30</span>
+              <span class="pt-time" data-schedule-key="sat-animator">18:00</span>
             </div>
 
             <div class="pt-item">
               <span class="pt-idx">06</span>
+              <div class="pt-body">
+                <span class="pt-name">Gruppenfotos</span>
+                <span class="pt-desc">Gemeinsame Fotos mit allen Gästen</span>
+              </div>
+              <span class="pt-time" data-schedule-key="sat-photos">19:00</span>
+            </div>
+
+            <div class="pt-item">
+              <span class="pt-idx">07</span>
               <div class="pt-body">
                 <span class="pt-name">Hochzeitstorte</span>
                 <span class="pt-desc">Eine süße Köstlichkeit</span>
@@ -1780,7 +1742,7 @@
             </div>
 
             <div class="pt-item">
-              <span class="pt-idx">07</span>
+              <span class="pt-idx">08</span>
               <div class="pt-body">
                 <span class="pt-name">Dank an die Eltern</span>
                 <span class="pt-desc">Ein paar Worte der Dankbarkeit an unsere Eltern</span>
@@ -1789,7 +1751,7 @@
             </div>
 
             <div class="pt-item">
-              <span class="pt-idx">08</span>
+              <span class="pt-idx">09</span>
               <div class="pt-body">
                 <span class="pt-name">Mitternachtstradition</span>
                 <span class="pt-desc">Musik, Tanz und Unterhaltung bis zum Morgengrauen</span>
@@ -1798,7 +1760,7 @@
             </div>
 
             <div class="pt-item">
-              <span class="pt-idx">09</span>
+              <span class="pt-idx">10</span>
               <div class="pt-body">
                 <span class="pt-name">Ende der Feier</span>
                 <span class="pt-desc">Bis zur Feier am nächsten Tag!</span>
@@ -1821,14 +1783,14 @@
                 <span class="pt-name">Snacks unter dem Pavillon</span>
                 <span class="pt-desc">Morgendliche Snacks für die Gäste auf dem Gelände des Ranczo Radzicz</span>
               </div>
-              <span class="pt-time" data-schedule-key="sun-snacks">08:00</span>
+              <span class="pt-time" data-schedule-key="sun-snacks">09:00</span>
             </div>
 
             <div class="pt-item">
               <span class="pt-idx">02</span>
               <div class="pt-body">
                 <span class="pt-name">Feier am nächsten Tag</span>
-                <span class="pt-desc">Essen, Erinnerungen und weitere gemeinsame Stunden im Ranczo Radzicz</span>
+                <span class="pt-desc">Essen, Erinnerungen und DJ im Festsaal mit Spielen bis 17:00 Uhr</span>
               </div>
               <span class="pt-time" data-schedule-key="sun-reception">12:00</span>
             </div>
